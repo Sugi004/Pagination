@@ -17,10 +17,6 @@ let table = document.createElement("table")
 table.setAttribute('class', 'table table-bordered table-striped')
 data.append(table)
 
-// let table2=document.createElement("table")
-// table2.setAttribute('class', 'table')
-// table.append(table2)
-
 let head = document.createElement('thead')
 let row1 = document.createElement('tr')
 let head1 = document.createElement('th')
@@ -158,7 +154,17 @@ var records = [];
 var currentPage = 1;
 var contentPerPage = 10;
 
+// Fetching data from API
 
+async function getData(){
+    const response = await fetch(url)
+    const datas = await response.json()
+    records = datas;
+    
+}
+getData()
+
+// rendering the fetched data from API
 
 async function renderTable(){
     await getData()
@@ -230,15 +236,8 @@ async function renderTable(){
 }
 renderTable();
 
-async function getData(){
-    const response = await fetch(url)
-    const datas = await response.json()
-    records = datas;
-    
-}
-getData()
 
-
+// adding functions to buttons
 
 var link = document.getElementsByClassName("pagination-numbers")
 
@@ -293,6 +292,8 @@ function lastBTN(){
 function numberOfPages(){
     return Math.ceil(records.length/contentPerPage)
 }
+
+// Adding functions to numbers to move to partiular page
 
 num1.addEventListener('click', ()=>{
     currentPage = 1;
