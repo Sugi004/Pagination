@@ -252,11 +252,16 @@ function activeLink(){
     
    
 function firstBTN(){
-    if(currentPage!=1){
+    
      currentPage = 1;
      renderTable();
+     
+     for(e of link){
+            e.classList.remove("active")
+        }
+       num1.classList.add("active")
     }
-}
+
 
 
 
@@ -285,8 +290,11 @@ function nextBTN(){
 
 function lastBTN(){
     currentPage = numberOfPages();
-
     renderTable();
+    for(e of link){
+        e.classList.remove("active")
+    }
+    num10.classList.add("active")
 }
 
 function numberOfPages(){
@@ -294,6 +302,7 @@ function numberOfPages(){
 }
 
 // Adding functions to numbers to move to partiular page
+
 
 num1.addEventListener('click', ()=>{
     currentPage = 1;
